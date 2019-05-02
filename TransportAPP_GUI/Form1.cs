@@ -64,6 +64,23 @@ namespace TransportAPP_GUI
             FindStation(txt_Bahnhof.Text, listbox_Bahnhof);
         }
 
+        private void txt_Stationsfinder_TextChanged(object sender, EventArgs e)
+        {
+            FindStation(txt_Stationsfinder.Text, listbox_Stationsfinder);
+        }
+
+
+        //CreateGoogleMaps
+        private void CreatGoogleMaps(string StationsName)
+        {
+            Stations stations = t.GetStations(StationsName);
+
+        }
+        private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         //MoveToListBox
         private void MoveToListBox(KeyEventArgs e, TextBox TextBoxName, ListBox ListBoxName)
@@ -103,6 +120,11 @@ namespace TransportAPP_GUI
             MoveToListBox(e, txt_Bahnhof, listbox_Bahnhof);
         }
 
+        private void txt_Stationsfinder_KeyDown(object sender, KeyEventArgs e)
+        {
+            MoveToListBox(e, txt_Stationsfinder, listbox_Stationsfinder);
+        }
+
         //FillTextBox
         private void FillTextBox(TextBox TextBoxName, ListBox ListBoxName)
         {
@@ -126,6 +148,11 @@ namespace TransportAPP_GUI
         private void listbox_Bahnhof_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             FillTextBox(txt_Bahnhof, listbox_Bahnhof);
+        }
+
+        private void listbox_Stationsfinder_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FillTextBox(txt_Stationsfinder, listbox_Stationsfinder);
         }
 
 
@@ -169,12 +196,12 @@ namespace TransportAPP_GUI
         
 
         //StationBoard
-        private void StationBoard(string BahnhofName, ListView ListViewName)
+        private void StationBoard(string StationName, ListView ListViewName)
         {
             ListViewName.Items.Clear();
             
-            Station station = t.GetStations(BahnhofName).StationList.First();
-            StationBoardRoot stationBoardRoot = t.GetStationBoard(BahnhofName, station.Id);
+            Station station = t.GetStations(StationName).StationList.First();
+            StationBoardRoot stationBoardRoot = t.GetStationBoard(StationName, station.Id);
 
             foreach (StationBoard stationBoard in stationBoardRoot.Entries)
             {
@@ -224,6 +251,12 @@ namespace TransportAPP_GUI
             ChangeTab(tab_Abfahrtstafel);
         }
 
+        private void btn_Stationsfinder_Click(object sender, EventArgs e)
+        {
+            ChangeTab(tab_Stationsfinder);
+        }
+
+
 
         //Button Farbe aendern
         private void ButtonFarbeAendern(Button ButtonName, Color ColorName)
@@ -249,6 +282,16 @@ namespace TransportAPP_GUI
         private void btn_Abfahrtstafel_MouseLeave(object sender, EventArgs e)
         {
             ButtonFarbeAendern(btn_Abfahrtstafel, Color.Black);
+        }
+
+        private void btn_Stationsfinder_MouseEnter(object sender, EventArgs e)
+        {
+            ButtonFarbeAendern(btn_Stationsfinder, Color.DarkSlateGray);
+        }
+
+        private void btn_Stationsfinder_MouseLeave(object sender, EventArgs e)
+        {
+            ButtonFarbeAendern(btn_Stationsfinder, Color.Black);
         }
     }
 }
