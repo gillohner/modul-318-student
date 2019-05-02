@@ -74,6 +74,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.datetimepicker_Time = new System.Windows.Forms.DateTimePicker();
+            this.btn_SendByMail = new System.Windows.Forms.Button();
             this.tab_Stationsfinder.SuspendLayout();
             this.tab_Abfahrtstafel.SuspendLayout();
             this.tab_Fahrplan.SuspendLayout();
@@ -326,6 +327,7 @@
             // 
             // tab_Fahrplan
             // 
+            this.tab_Fahrplan.Controls.Add(this.btn_SendByMail);
             this.tab_Fahrplan.Controls.Add(this.datetimepicker_Time);
             this.tab_Fahrplan.Controls.Add(this.btn_Swap);
             this.tab_Fahrplan.Controls.Add(this.datetimepicker_Date);
@@ -545,6 +547,15 @@
             this.datetimepicker_Time.Size = new System.Drawing.Size(82, 20);
             this.datetimepicker_Time.TabIndex = 23;
             // 
+            // btn_SendByMail
+            // 
+            this.btn_SendByMail.Location = new System.Drawing.Point(667, 539);
+            this.btn_SendByMail.Name = "btn_SendByMail";
+            this.btn_SendByMail.Size = new System.Drawing.Size(103, 23);
+            this.btn_SendByMail.TabIndex = 24;
+            this.btn_SendByMail.Text = "Per Mail Senden";
+            this.btn_SendByMail.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,6 +632,7 @@
         private System.Windows.Forms.Button btn_Swap;
         private System.Windows.Forms.DateTimePicker datetimepicker_Date;
         private System.Windows.Forms.DateTimePicker datetimepicker_Time;
+        private System.Windows.Forms.Button btn_SendByMail;
     }
 }
 
