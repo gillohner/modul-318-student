@@ -41,6 +41,11 @@
             this.columnAbfahrt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnAnkunft = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_Abfahrtstafel = new System.Windows.Forms.Button();
+            this.columnVon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnNach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDauer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnGleisVon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnGleisNach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lbl_Fahrplan
@@ -137,8 +142,13 @@
             // 
             this.listview_Ausgabe.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnAbfahrt,
-            this.columnAnkunft});
-            this.listview_Ausgabe.Location = new System.Drawing.Point(194, 900);
+            this.columnAnkunft,
+            this.columnVon,
+            this.columnGleisVon,
+            this.columnNach,
+            this.columnGleisNach,
+            this.columnDauer});
+            this.listview_Ausgabe.Location = new System.Drawing.Point(198, 898);
             this.listview_Ausgabe.Margin = new System.Windows.Forms.Padding(6);
             this.listview_Ausgabe.Name = "listview_Ausgabe";
             this.listview_Ausgabe.Size = new System.Drawing.Size(1276, 498);
@@ -168,7 +178,33 @@
             this.btn_Abfahrtstafel.TabIndex = 12;
             this.btn_Abfahrtstafel.Text = "Abfahrtstafel";
             this.btn_Abfahrtstafel.UseVisualStyleBackColor = false;
-            this.btn_Abfahrtstafel.Click += new System.EventHandler(this.btn_Abfahrtstafel_Click);
+            // 
+            // columnVon
+            // 
+            this.columnVon.Text = "Von";
+            this.columnVon.Width = 242;
+            // 
+            // columnNach
+            // 
+            this.columnNach.Text = "Nach";
+            this.columnNach.Width = 228;
+            // 
+            // columnDauer
+            // 
+            this.columnDauer.DisplayIndex = 6;
+            this.columnDauer.Text = "Dauer";
+            this.columnDauer.Width = 98;
+            // 
+            // columnGleisVon
+            // 
+            this.columnGleisVon.Text = "Gleis";
+            this.columnGleisVon.Width = 68;
+            // 
+            // columnGleisNach
+            // 
+            this.columnGleisNach.DisplayIndex = 5;
+            this.columnGleisNach.Text = "Gleis";
+            this.columnGleisNach.Width = 68;
             // 
             // Form1
             // 
@@ -187,7 +223,9 @@
             this.Controls.Add(this.lbl_Fahrplan);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fahrplan";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,6 +245,11 @@
         private System.Windows.Forms.ColumnHeader columnAbfahrt;
         private System.Windows.Forms.ColumnHeader columnAnkunft;
         private System.Windows.Forms.Button btn_Abfahrtstafel;
+        private System.Windows.Forms.ColumnHeader columnVon;
+        private System.Windows.Forms.ColumnHeader columnNach;
+        private System.Windows.Forms.ColumnHeader columnDauer;
+        private System.Windows.Forms.ColumnHeader columnGleisVon;
+        private System.Windows.Forms.ColumnHeader columnGleisNach;
     }
 }
 

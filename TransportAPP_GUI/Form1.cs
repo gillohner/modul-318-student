@@ -31,8 +31,11 @@ namespace TransportAPP_GUI
             foreach (Station station in Stations.StationList)
             {
                 try
-                { 
-                    ListBoxName.Items.Add(station.Name);
+                {
+                    if(station.Id != null)
+                    {
+                        ListBoxName.Items.Add(station.Name);
+                    }
                 }
                 catch
                 {
@@ -64,6 +67,11 @@ namespace TransportAPP_GUI
                     ListViewItem connection1 = new ListViewItem();
                     connection1.Text = Departure.ToShortTimeString();
                     connection1.SubItems.Add(Arrival.ToShortTimeString());
+                    connection1.SubItems.Add(connection.From.Station.Name);
+                    connection1.SubItems.Add(connection.From.Platform);
+                    connection1.SubItems.Add(connection.To.Station.Name);
+                    connection1.SubItems.Add(connection.To.Platform);
+                    connection1.SubItems.Add(connection.Duration);
 
                     ListViewName.Items.Add(connection1);
                 }
