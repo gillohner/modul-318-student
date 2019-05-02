@@ -56,7 +56,7 @@
             this.columnBetreiber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_SuchenAbfahrtstafel = new System.Windows.Forms.Button();
             this.txt_Bahnhof = new System.Windows.Forms.TextBox();
-            this.listBox_Bahnhof = new System.Windows.Forms.ListBox();
+            this.listbox_Bahnhof = new System.Windows.Forms.ListBox();
             this.lbl_Bahnhof = new System.Windows.Forms.Label();
             this.lbl_Abfahrtstafel = new System.Windows.Forms.Label();
             this.btn_Fahrplan = new System.Windows.Forms.Button();
@@ -112,7 +112,7 @@
             this.columnVerspaetung});
             this.listview_Ausgabe.Location = new System.Drawing.Point(85, 404);
             this.listview_Ausgabe.Name = "listview_Ausgabe";
-            this.listview_Ausgabe.Size = new System.Drawing.Size(685, 118);
+            this.listview_Ausgabe.Size = new System.Drawing.Size(685, 100);
             this.listview_Ausgabe.TabIndex = 21;
             this.listview_Ausgabe.TabStop = false;
             this.listview_Ausgabe.UseCompatibleStateImageBehavior = false;
@@ -183,6 +183,7 @@
             this.txt_Nach.Size = new System.Drawing.Size(258, 20);
             this.txt_Nach.TabIndex = 14;
             this.txt_Nach.TextChanged += new System.EventHandler(this.txt_Nach_TextChanged);
+            this.txt_Nach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Nach_KeyDown);
             // 
             // txt_Von
             // 
@@ -191,6 +192,7 @@
             this.txt_Von.Size = new System.Drawing.Size(259, 20);
             this.txt_Von.TabIndex = 13;
             this.txt_Von.TextChanged += new System.EventHandler(this.txt_Von_TextChanged);
+            this.txt_Von.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Von_KeyDown);
             // 
             // listbox_Nach
             // 
@@ -200,7 +202,7 @@
             this.listbox_Nach.Size = new System.Drawing.Size(258, 121);
             this.listbox_Nach.TabIndex = 20;
             this.listbox_Nach.TabStop = false;
-            this.listbox_Nach.SelectedIndexChanged += new System.EventHandler(this.listbox_Nach_DoubleClick);
+            this.listbox_Nach.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listbox_Nach_MouseDoubleClick);
             // 
             // listbox_Von
             // 
@@ -210,7 +212,7 @@
             this.listbox_Von.Size = new System.Drawing.Size(258, 121);
             this.listbox_Von.TabIndex = 19;
             this.listbox_Von.TabStop = false;
-            this.listbox_Von.SelectedIndexChanged += new System.EventHandler(this.listbox_Von_DoubleClick);
+            this.listbox_Von.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listbox_Von_MouseDoubleClick);
             // 
             // lbl_Nach
             // 
@@ -248,7 +250,7 @@
             this.tab_Abfahrtstafel.Controls.Add(this.listView_AbfahrtsTafel);
             this.tab_Abfahrtstafel.Controls.Add(this.btn_SuchenAbfahrtstafel);
             this.tab_Abfahrtstafel.Controls.Add(this.txt_Bahnhof);
-            this.tab_Abfahrtstafel.Controls.Add(this.listBox_Bahnhof);
+            this.tab_Abfahrtstafel.Controls.Add(this.listbox_Bahnhof);
             this.tab_Abfahrtstafel.Controls.Add(this.lbl_Bahnhof);
             this.tab_Abfahrtstafel.Controls.Add(this.lbl_Abfahrtstafel);
             this.tab_Abfahrtstafel.Location = new System.Drawing.Point(4, 22);
@@ -312,16 +314,17 @@
             this.txt_Bahnhof.Size = new System.Drawing.Size(259, 20);
             this.txt_Bahnhof.TabIndex = 20;
             this.txt_Bahnhof.TextChanged += new System.EventHandler(this.txt_Bahnhof_TextChanged);
+            this.txt_Bahnhof.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Bahnhof_KeyDown);
             // 
-            // listBox_Bahnhof
+            // listbox_Bahnhof
             // 
-            this.listBox_Bahnhof.FormattingEnabled = true;
-            this.listBox_Bahnhof.Location = new System.Drawing.Point(85, 132);
-            this.listBox_Bahnhof.Name = "listBox_Bahnhof";
-            this.listBox_Bahnhof.Size = new System.Drawing.Size(258, 121);
-            this.listBox_Bahnhof.TabIndex = 22;
-            this.listBox_Bahnhof.TabStop = false;
-            this.listBox_Bahnhof.DoubleClick += new System.EventHandler(this.listBox_Bahnhof_DoubleClick);
+            this.listbox_Bahnhof.FormattingEnabled = true;
+            this.listbox_Bahnhof.Location = new System.Drawing.Point(85, 132);
+            this.listbox_Bahnhof.Name = "listbox_Bahnhof";
+            this.listbox_Bahnhof.Size = new System.Drawing.Size(258, 121);
+            this.listbox_Bahnhof.TabIndex = 22;
+            this.listbox_Bahnhof.TabStop = false;
+            this.listbox_Bahnhof.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listbox_Bahnhof_MouseDoubleClick);
             // 
             // lbl_Bahnhof
             // 
@@ -406,8 +409,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btn_Fahrplan);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_Abfahrtstafel);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -445,7 +448,7 @@
         private System.Windows.Forms.TabPage tab_Abfahrtstafel;
         private System.Windows.Forms.Label lbl_Abfahrtstafel;
         private System.Windows.Forms.TextBox txt_Bahnhof;
-        private System.Windows.Forms.ListBox listBox_Bahnhof;
+        private System.Windows.Forms.ListBox listbox_Bahnhof;
         private System.Windows.Forms.Label lbl_Bahnhof;
         private System.Windows.Forms.Button btn_SuchenAbfahrtstafel;
         private System.Windows.Forms.ColumnHeader columnZugName;

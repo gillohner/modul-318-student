@@ -13,7 +13,6 @@ namespace TransportAPP_GUI
 {
     public partial class Form1 : Form
     {
-
         //Membervariablen
         Transport t = new Transport();
 
@@ -30,14 +29,14 @@ namespace TransportAPP_GUI
         }
 
 
-        //StationSuchen
-        private void StationSuchen(string StationsName, ListBox ListBoxName)
+        //FindStation
+        private void FindStation(string StationsName, ListBox ListBoxName)
         {
             Stations stations = t.GetStations(StationsName);
 
             ListBoxName.Items.Clear();
 
-            foreach (Station station in stations.StationList)
+            foreach(Station station in stations.StationList)
             {
                 try
                 {
@@ -46,56 +45,92 @@ namespace TransportAPP_GUI
                         ListBoxName.Items.Add(station.Name);
                     }
                 }
-                catch
-                {
-                }
+                catch { }
             }
         }
-
+        
         private void txt_Von_TextChanged(object sender, EventArgs e)
         {
-            StationSuchen(txt_Von.Text, listbox_Von);
+            FindStation(txt_Von.Text, listbox_Von);
         }
 
         private void txt_Nach_TextChanged(object sender, EventArgs e)
         {
-            StationSuchen(txt_Nach.Text, listbox_Nach);
+            FindStation(txt_Nach.Text, listbox_Nach);
         }
 
         private void txt_Bahnhof_TextChanged(object sender, EventArgs e)
         {
-            StationSuchen(txt_Bahnhof.Text, listBox_Bahnhof);
+            FindStation(txt_Bahnhof.Text, listbox_Bahnhof);
         }
 
 
-        //TextBoxBefuellung
-        private void TextBoxBefuellung(ListBox ListBoxName, TextBox TextBoxName)
+        //MoveToListBox
+        private void MoveToListBox(KeyEventArgs e, TextBox TextBoxName, ListBox ListBoxName)
         {
-            if (ListBoxName.SelectedIndex > -1)
             {
-                TextBoxName.Text = ListBoxName.SelectedItems[0].ToString();
-                ListBoxName.Items.Clear();
+                try
+                {
+                    if (e.KeyCode == Keys.Up)
+                    {
+                        ListBoxName.SelectedIndex--;
+                    }
+                    else if (e.KeyCode == Keys.Down)
+                    {
+                        ListBoxName.SelectedIndex++;
+                    }
+                    else if (e.KeyCode == Keys.Enter)
+                    {
+                        TextBoxName.Text = ListBoxName.SelectedItems[0].ToString();
+                    }
+                }
+                catch { }
             }
         }
 
-        private void listbox_Von_DoubleClick(object sender, EventArgs e)
+        private void txt_Von_KeyDown(object sender, KeyEventArgs e)
         {
-            TextBoxBefuellung(listbox_Von, txt_Von);
+            MoveToListBox(e, txt_Von, listbox_Von);
         }
 
-        private void listbox_Nach_DoubleClick(object sender, EventArgs e)
+        private void txt_Nach_KeyDown(object sender, KeyEventArgs e)
         {
-            TextBoxBefuellung(listbox_Nach, txt_Nach);
+            MoveToListBox(e, txt_Nach, listbox_Nach);
         }
 
-        private void listBox_Bahnhof_DoubleClick(object sender, EventArgs e)
+        private void txt_Bahnhof_KeyDown(object sender, KeyEventArgs e)
         {
-            TextBoxBefuellung(listBox_Bahnhof, txt_Bahnhof);
+            MoveToListBox(e, txt_Bahnhof, listbox_Bahnhof);
+        }
+
+        //FillTextBox
+        private void FillTextBox(TextBox TextBoxName, ListBox ListBoxName)
+        {
+            try
+            {
+                TextBoxName.Text = ListBoxName.SelectedItems[0].ToString();
+            }
+            catch { }
+        }
+
+        private void listbox_Von_MouseDoubleClick(object sender, MouseEventArgs e)
+        { 
+            FillTextBox(txt_Von, listbox_Von);
+        }
+
+        private void listbox_Nach_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FillTextBox(txt_Nach, listbox_Nach);
+        }
+
+        private void listbox_Bahnhof_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FillTextBox(txt_Bahnhof, listbox_Bahnhof);
         }
 
 
-        //Verbindung        
-        private void Verbindung(ListView ListViewName, String Abfahrtstation, String Zielstation)
+        //Connection        
+        private void Connection(ListView ListViewName, String Abfahrtstation, String Zielstation)
         {
             ListViewName.Items.Clear();
 
@@ -123,24 +158,21 @@ namespace TransportAPP_GUI
 
                     ListViewName.Items.Add(connection1);
                 }
-                catch
-                {
-
-                }
+                catch { }
             }
         }
 
         private void btn_Suchen_Click(object sender, EventArgs e)
         {
-            Verbindung(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
+            Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
         }
-
+        
 
         //StationBoard
         private void StationBoard(string BahnhofName, ListView ListViewName)
         {
             ListViewName.Items.Clear();
-
+            
             Station station = t.GetStations(BahnhofName).StationList.First();
             StationBoardRoot stationBoardRoot = t.GetStationBoard(BahnhofName, station.Id);
 
@@ -158,31 +190,38 @@ namespace TransportAPP_GUI
                 }
                 catch
                 {
-                   // MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                   MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.", "Caption", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 }
             }
         }
 
         private void btn_SuchenAbfahrtstafel_Click(object sender, EventArgs e)
         {
-            StationBoard(txt_Bahnhof.Text, listView_AbfahrtsTafel);
+            try
+            {
+                StationBoard(txt_Bahnhof.Text, listView_AbfahrtsTafel);
+            }
+            catch
+            {
+                MessageBox.Show("Geben Sie bitte eine gültige Station ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 
-        //Tab wechseln mit Buttons
-        private void TabWechseln(TabPage TabPageName)
+        //ChangeTab
+        private void ChangeTab(TabPage TabPageName)
         {
             tabControl.SelectTab(TabPageName);
         }
 
         private void btn_Fahrplan_Click(object sender, EventArgs e)
         {
-            TabWechseln(tab_Fahrplan);
+            ChangeTab(tab_Fahrplan);
         }
 
         private void btn_Abfahrtstafel_Click(object sender, EventArgs e)
         {
-            TabWechseln(tab_Abfahrtstafel);
+            ChangeTab(tab_Abfahrtstafel);
         }
 
 
