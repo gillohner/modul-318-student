@@ -145,7 +145,7 @@ namespace TransportAPP_GUI
 
 
         //Connection        
-        private void Connection(ListView ListViewName, String Abfahrtstation, String Zielstation)
+        private void Connection(ListView ListViewName, String Abfahrtstation, String Zielstation, DateTime time, DateTime date)
         {
             ListViewName.Items.Clear();
 
@@ -178,8 +178,8 @@ namespace TransportAPP_GUI
         }
 
         private void btn_Suchen_Click(object sender, EventArgs e)
-        {
-            Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
+        {  
+                Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text, datetimepicker_Time.Value, datetimepicker_Date.Value);
         }
 
 
@@ -302,6 +302,11 @@ namespace TransportAPP_GUI
         private void btn_Stationsfinder_MouseLeave(object sender, EventArgs e)
         {
             ButtonFarbeAendern(btn_Stationsfinder, Color.Black);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
