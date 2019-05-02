@@ -22,7 +22,7 @@ namespace TransportAPP_GUI
             InitializeComponent();
         }
 
-        private void StationSuchen(string Stationsname, ListBox ListBoxName)
+        public void StationSuchen(string Stationsname, ListBox ListBoxName)
         {
             Stations Stations = t.GetStations(Stationsname);
 
@@ -51,6 +51,8 @@ namespace TransportAPP_GUI
 
         private void Verbindung(ListView ListViewName)
         {
+            ListViewName.Items.Clear();
+
             Connections Verbindungen = t.GetConnections(txt_Von.Text, txt_Nach.Text);
 
             foreach (Connection connection in Verbindungen.ConnectionList)
@@ -59,8 +61,11 @@ namespace TransportAPP_GUI
                 DateTime Arrival = DateTime.Parse(connection.To.Arrival);
                 try
                 {
-                    ListViewName.Items.Add(Departure.ToShortTimeString());
+                    ListViewItem connection1 = new ListViewItem();
+                    connection1.Text = Departure.ToShortTimeString();
+                    connection1.SubItems.Add(Arrival.ToShortTimeString());
 
+                    ListViewName.Items.Add(connection1);
                 }
                 catch
                 {
