@@ -16,6 +16,7 @@ namespace TransportAPP_GUI
 
         //Membervariablen
         Transport t = new Transport();
+        Form2 form = null;
 
         public Form1()
         {
@@ -56,9 +57,9 @@ namespace TransportAPP_GUI
         {
             ListViewName.Items.Clear();
 
-            Connections Verbindungen = t.GetConnections(txt_Von.Text, txt_Nach.Text);
+            Connections connections = t.GetConnections(txt_Von.Text, txt_Nach.Text);
 
-            foreach (Connection connection in Verbindungen.ConnectionList)
+            foreach (Connection connection in connections.ConnectionList)
             {
                 DateTime Departure = DateTime.Parse(connection.From.Departure);
                 DateTime Arrival = DateTime.Parse(connection.To.Arrival);
@@ -105,6 +106,18 @@ namespace TransportAPP_GUI
         private void listbox_Nach_DoubleClick(object sender, EventArgs e)
         {
             TextBoxBefuellung(listbox_Nach, txt_Nach);
+        }
+
+        private void btn_Abfahrtstafel_Click(object sender, EventArgs e)
+        {
+            if (form == null)
+            { 
+                form = new Form2(this);
+                form.Show();
+            }
+
+            form.Activate();
+
         }
     }
 }
