@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tab_Fahrplan = new System.Windows.Forms.TabPage();
             this.listview_Ausgabe = new System.Windows.Forms.ListView();
             this.columnZugName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnAbfahrt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,50 +48,55 @@
             this.lbl_Nach = new System.Windows.Forms.Label();
             this.lbl_Von = new System.Windows.Forms.Label();
             this.lbl_Fahrplan = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_Abfahrtstafel = new System.Windows.Forms.TabPage();
             this.listView_AbfahrtsTafel = new System.Windows.Forms.ListView();
             this.column_AT_ZugName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column_AT_Abfahrt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column_AT_Richtung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnBetreiber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_SuchenAbfahrtstafel = new System.Windows.Forms.Button();
             this.txt_Bahnhof = new System.Windows.Forms.TextBox();
             this.listBox_Bahnhof = new System.Windows.Forms.ListBox();
             this.lbl_Bahnhof = new System.Windows.Forms.Label();
             this.lbl_Abfahrtstafel = new System.Windows.Forms.Label();
-            this.columnBetreiber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_Fahrplan = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Abfahrtstafel = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tab_Fahrplan.SuspendLayout();
+            this.tab_Abfahrtstafel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(222, -1);
+            this.tabControl.Controls.Add(this.tab_Fahrplan);
+            this.tabControl.Controls.Add(this.tab_Abfahrtstafel);
+            this.tabControl.Location = new System.Drawing.Point(222, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(867, 737);
+            this.tabControl.Size = new System.Drawing.Size(867, 724);
             this.tabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // tab_Fahrplan
             // 
-            this.tabPage1.Controls.Add(this.listview_Ausgabe);
-            this.tabPage1.Controls.Add(this.btn_Suchen);
-            this.tabPage1.Controls.Add(this.txt_Nach);
-            this.tabPage1.Controls.Add(this.txt_Von);
-            this.tabPage1.Controls.Add(this.listbox_Nach);
-            this.tabPage1.Controls.Add(this.listbox_Von);
-            this.tabPage1.Controls.Add(this.lbl_Nach);
-            this.tabPage1.Controls.Add(this.lbl_Von);
-            this.tabPage1.Controls.Add(this.lbl_Fahrplan);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(859, 711);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tab_Fahrplan";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tab_Fahrplan.Controls.Add(this.listview_Ausgabe);
+            this.tab_Fahrplan.Controls.Add(this.btn_Suchen);
+            this.tab_Fahrplan.Controls.Add(this.txt_Nach);
+            this.tab_Fahrplan.Controls.Add(this.txt_Von);
+            this.tab_Fahrplan.Controls.Add(this.listbox_Nach);
+            this.tab_Fahrplan.Controls.Add(this.listbox_Von);
+            this.tab_Fahrplan.Controls.Add(this.lbl_Nach);
+            this.tab_Fahrplan.Controls.Add(this.lbl_Von);
+            this.tab_Fahrplan.Controls.Add(this.lbl_Fahrplan);
+            this.tab_Fahrplan.Location = new System.Drawing.Point(4, 22);
+            this.tab_Fahrplan.Name = "tab_Fahrplan";
+            this.tab_Fahrplan.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Fahrplan.Size = new System.Drawing.Size(859, 698);
+            this.tab_Fahrplan.TabIndex = 0;
+            this.tab_Fahrplan.Text = "tab_Fahrplan";
+            this.tab_Fahrplan.UseVisualStyleBackColor = true;
             // 
             // listview_Ausgabe
             // 
@@ -239,21 +243,21 @@
             this.lbl_Fahrplan.TabIndex = 15;
             this.lbl_Fahrplan.Text = "Fahrplan";
             // 
-            // tabPage2
+            // tab_Abfahrtstafel
             // 
-            this.tabPage2.Controls.Add(this.listView_AbfahrtsTafel);
-            this.tabPage2.Controls.Add(this.btn_SuchenAbfahrtstafel);
-            this.tabPage2.Controls.Add(this.txt_Bahnhof);
-            this.tabPage2.Controls.Add(this.listBox_Bahnhof);
-            this.tabPage2.Controls.Add(this.lbl_Bahnhof);
-            this.tabPage2.Controls.Add(this.lbl_Abfahrtstafel);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(859, 711);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tab_Abfahrtstafel";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_Abfahrtstafel.Controls.Add(this.listView_AbfahrtsTafel);
+            this.tab_Abfahrtstafel.Controls.Add(this.btn_SuchenAbfahrtstafel);
+            this.tab_Abfahrtstafel.Controls.Add(this.txt_Bahnhof);
+            this.tab_Abfahrtstafel.Controls.Add(this.listBox_Bahnhof);
+            this.tab_Abfahrtstafel.Controls.Add(this.lbl_Bahnhof);
+            this.tab_Abfahrtstafel.Controls.Add(this.lbl_Abfahrtstafel);
+            this.tab_Abfahrtstafel.Location = new System.Drawing.Point(4, 22);
+            this.tab_Abfahrtstafel.Name = "tab_Abfahrtstafel";
+            this.tab_Abfahrtstafel.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Abfahrtstafel.Size = new System.Drawing.Size(859, 698);
+            this.tab_Abfahrtstafel.TabIndex = 1;
+            this.tab_Abfahrtstafel.Text = "tab_Abfahrtstafel";
+            this.tab_Abfahrtstafel.UseVisualStyleBackColor = true;
             // 
             // listView_AbfahrtsTafel
             // 
@@ -281,7 +285,12 @@
             // column_AT_Richtung
             // 
             this.column_AT_Richtung.Text = "Richtung";
-            this.column_AT_Richtung.Width = 198;
+            this.column_AT_Richtung.Width = 200;
+            // 
+            // columnBetreiber
+            // 
+            this.columnBetreiber.Text = "Betreiber";
+            this.columnBetreiber.Width = 325;
             // 
             // btn_SuchenAbfahrtstafel
             // 
@@ -335,34 +344,88 @@
             this.lbl_Abfahrtstafel.TabIndex = 16;
             this.lbl_Abfahrtstafel.Text = "Abfahrtstafel";
             // 
-            // columnBetreiber
+            // btn_Fahrplan
             // 
-            this.columnBetreiber.Text = "Betreiber";
+            this.btn_Fahrplan.BackColor = System.Drawing.Color.Black;
+            this.btn_Fahrplan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Fahrplan.FlatAppearance.BorderSize = 0;
+            this.btn_Fahrplan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Fahrplan.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Fahrplan.ForeColor = System.Drawing.Color.White;
+            this.btn_Fahrplan.Location = new System.Drawing.Point(-1, 192);
+            this.btn_Fahrplan.Name = "btn_Fahrplan";
+            this.btn_Fahrplan.Size = new System.Drawing.Size(229, 74);
+            this.btn_Fahrplan.TabIndex = 1;
+            this.btn_Fahrplan.Text = "Fahrplan";
+            this.btn_Fahrplan.UseVisualStyleBackColor = false;
+            this.btn_Fahrplan.Click += new System.EventHandler(this.btn_Fahrplan_Click);
+            this.btn_Fahrplan.MouseEnter += new System.EventHandler(this.btn_Fahrplan_MouseEnter);
+            this.btn_Fahrplan.MouseLeave += new System.EventHandler(this.btn_Fahrplan_MouseLeave);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1086, 33);
+            this.panel1.TabIndex = 22;
+            // 
+            // btn_Abfahrtstafel
+            // 
+            this.btn_Abfahrtstafel.BackColor = System.Drawing.Color.Black;
+            this.btn_Abfahrtstafel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Abfahrtstafel.FlatAppearance.BorderSize = 0;
+            this.btn_Abfahrtstafel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Abfahrtstafel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Abfahrtstafel.ForeColor = System.Drawing.Color.White;
+            this.btn_Abfahrtstafel.Location = new System.Drawing.Point(-1, 271);
+            this.btn_Abfahrtstafel.Name = "btn_Abfahrtstafel";
+            this.btn_Abfahrtstafel.Size = new System.Drawing.Size(229, 74);
+            this.btn_Abfahrtstafel.TabIndex = 23;
+            this.btn_Abfahrtstafel.Text = "Abfahrtstafel";
+            this.btn_Abfahrtstafel.UseVisualStyleBackColor = false;
+            this.btn_Abfahrtstafel.Click += new System.EventHandler(this.btn_Abfahrtstafel_Click);
+            this.btn_Abfahrtstafel.MouseEnter += new System.EventHandler(this.btn_Abfahrtstafel_MouseEnter);
+            this.btn_Abfahrtstafel.MouseLeave += new System.EventHandler(this.btn_Abfahrtstafel_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TransportAPP_GUI.Properties.Resources.train1;
+            this.pictureBox1.Location = new System.Drawing.Point(-67, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(281, 152);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1084, 731);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.btn_Fahrplan);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_Abfahrtstafel);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fahrplan APP";
+            this.Text = "FahrplanAPP";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tab_Fahrplan.ResumeLayout(false);
+            this.tab_Fahrplan.PerformLayout();
+            this.tab_Abfahrtstafel.ResumeLayout(false);
+            this.tab_Abfahrtstafel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tab_Fahrplan;
         private System.Windows.Forms.ListView listview_Ausgabe;
         private System.Windows.Forms.ColumnHeader columnAbfahrt;
         private System.Windows.Forms.ColumnHeader columnAnkunft;
@@ -379,7 +442,7 @@
         private System.Windows.Forms.Label lbl_Nach;
         private System.Windows.Forms.Label lbl_Von;
         private System.Windows.Forms.Label lbl_Fahrplan;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tab_Abfahrtstafel;
         private System.Windows.Forms.Label lbl_Abfahrtstafel;
         private System.Windows.Forms.TextBox txt_Bahnhof;
         private System.Windows.Forms.ListBox listBox_Bahnhof;
@@ -392,6 +455,10 @@
         private System.Windows.Forms.ColumnHeader column_AT_Abfahrt;
         private System.Windows.Forms.ColumnHeader column_AT_Richtung;
         private System.Windows.Forms.ColumnHeader columnBetreiber;
+        private System.Windows.Forms.Button btn_Fahrplan;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_Abfahrtstafel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
