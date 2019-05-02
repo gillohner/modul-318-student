@@ -150,7 +150,7 @@ namespace TransportAPP_GUI
             ListViewName.Items.Clear();
 
             Connections connections = t.GetConnections(Abfahrtstation, Zielstation);
-
+            //Nicht Fertig!!
             foreach (Connection connection in connections.ConnectionList)
             {
                 DateTime Departure = DateTime.Parse(connection.From.Departure);
