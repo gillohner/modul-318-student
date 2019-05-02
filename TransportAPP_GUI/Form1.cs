@@ -22,9 +22,9 @@ namespace TransportAPP_GUI
             InitializeComponent();
         }
 
-        public void StationSuchen(string Stationsname, ListBox ListBoxName)
+        private void StationSuchen(string StationsName, ListBox ListBoxName)
         {
-            Stations stations = t.GetStations(Stationsname);
+            Stations stations = t.GetStations(StationsName);
 
             ListBoxName.Items.Clear();
 
@@ -90,28 +90,25 @@ namespace TransportAPP_GUI
         private void StationBoard(string BahnhofName, ListView ListViewName)
         {
             Stations stations = t.GetStations(BahnhofName);
-            string ID = null;
+            StationBoardRoot stationBoard = t.GetStationBoard(BahnhofName.Id);
 
-            foreach (Station station in stations.StationList)
+            MessageBox.Show(ID);
+            StationBoardRoot stationBoardRoot = t.GetStationBoard(BahnhofName, ID);
+
+            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
             {
                 try
                 {
-                    ID= station.Id;
-                }
-                catch {}
-            }
+                    ListViewItem listViewItem = new ListViewItem();
+                    listViewItem.Text = stationBoard.Name;
+                    listViewItem.SubItems.Add(stationBoard.Stop.Departure.ToShortTimeString());
+                    listViewItem.SubItems.Add(stationBoard.To);
 
-            StationBoardRoot stationBoard = t.GetStationBoard(BahnhofName, ID);
-
-            foreach (StationBoard sb in stationBoard.Entries)
-            {
-                try
-                {
-
+                    ListViewName.Items.Add(listViewItem);
                 }
                 catch
                 {
-                    MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.");
+                   // MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 }
             }
         }

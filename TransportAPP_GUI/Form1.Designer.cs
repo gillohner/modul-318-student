@@ -54,13 +54,12 @@
             this.column_AT_ZugName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column_AT_Abfahrt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column_AT_Richtung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.column_AT_Gleis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.column_AT_Verspaetung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_SuchenAbfahrtstafel = new System.Windows.Forms.Button();
             this.txt_Bahnhof = new System.Windows.Forms.TextBox();
             this.listBox_Bahnhof = new System.Windows.Forms.ListBox();
             this.lbl_Bahnhof = new System.Windows.Forms.Label();
             this.lbl_Abfahrtstafel = new System.Windows.Forms.Label();
+            this.columnBetreiber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -70,10 +69,10 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(222, 2);
+            this.tabControl.Location = new System.Drawing.Point(222, -1);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(867, 734);
+            this.tabControl.Size = new System.Drawing.Size(867, 737);
             this.tabControl.TabIndex = 0;
             // 
             // tabPage1
@@ -90,7 +89,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(859, 708);
+            this.tabPage1.Size = new System.Drawing.Size(859, 711);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tab_Fahrplan";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -251,7 +250,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(859, 710);
+            this.tabPage2.Size = new System.Drawing.Size(859, 711);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tab_Abfahrtstafel";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -262,8 +261,7 @@
             this.column_AT_ZugName,
             this.column_AT_Abfahrt,
             this.column_AT_Richtung,
-            this.column_AT_Gleis,
-            this.column_AT_Verspaetung});
+            this.columnBetreiber});
             this.listView_AbfahrtsTafel.Location = new System.Drawing.Point(85, 321);
             this.listView_AbfahrtsTafel.Name = "listView_AbfahrtsTafel";
             this.listView_AbfahrtsTafel.Size = new System.Drawing.Size(685, 261);
@@ -274,7 +272,7 @@
             // column_AT_ZugName
             // 
             this.column_AT_ZugName.Text = "";
-            this.column_AT_ZugName.Width = 59;
+            this.column_AT_ZugName.Width = 91;
             // 
             // column_AT_Abfahrt
             // 
@@ -283,17 +281,7 @@
             // column_AT_Richtung
             // 
             this.column_AT_Richtung.Text = "Richtung";
-            this.column_AT_Richtung.Width = 133;
-            // 
-            // column_AT_Gleis
-            // 
-            this.column_AT_Gleis.Text = "Gleis";
-            this.column_AT_Gleis.Width = 44;
-            // 
-            // column_AT_Verspaetung
-            // 
-            this.column_AT_Verspaetung.Text = "Verspätung";
-            this.column_AT_Verspaetung.Width = 69;
+            this.column_AT_Richtung.Width = 198;
             // 
             // btn_SuchenAbfahrtstafel
             // 
@@ -347,6 +335,10 @@
             this.lbl_Abfahrtstafel.TabIndex = 16;
             this.lbl_Abfahrtstafel.Text = "Abfahrtstafel";
             // 
+            // columnBetreiber
+            // 
+            this.columnBetreiber.Text = "Betreiber";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,8 +391,7 @@
         private System.Windows.Forms.ColumnHeader column_AT_ZugName;
         private System.Windows.Forms.ColumnHeader column_AT_Abfahrt;
         private System.Windows.Forms.ColumnHeader column_AT_Richtung;
-        private System.Windows.Forms.ColumnHeader column_AT_Gleis;
-        private System.Windows.Forms.ColumnHeader column_AT_Verspaetung;
+        private System.Windows.Forms.ColumnHeader columnBetreiber;
     }
 }
 
