@@ -70,18 +70,6 @@ namespace TransportAPP_GUI
         }
 
 
-        //CreateGoogleMaps
-        private void CreatGoogleMaps(string StationsName)
-        {
-            Stations stations = t.GetStations(StationsName);
-
-        }
-        private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         //MoveToListBox
         private void MoveToListBox(KeyEventArgs e, TextBox TextBoxName, ListBox ListBoxName)
         {
@@ -193,7 +181,29 @@ namespace TransportAPP_GUI
         {
             Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
         }
-        
+
+
+        //CreateGoogleMaps
+        private void CreateGoogleMaps(string StationName)
+        {
+            Station stations = t.GetStations(StationName).StationList.First();
+
+            string xcoordinate = stations.Coordinate.XCoordinate.ToString();
+            string ycoordinate = stations.Coordinate.YCoordinate.ToString();
+            webBrowser.Url = new System.Uri("https://www.google.com/maps?q=" + xcoordinate + "," +  ycoordinate, System.UriKind.Absolute);
+        }
+        private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CreateGoogleMaps(txt_Stationsfinder.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Geben Sie bitte eine gültige Station ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         //StationBoard
         private void StationBoard(string StationName, ListView ListViewName)
@@ -203,7 +213,7 @@ namespace TransportAPP_GUI
             Station station = t.GetStations(StationName).StationList.First();
             StationBoardRoot stationBoardRoot = t.GetStationBoard(StationName, station.Id);
 
-            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
+            foreach(StationBoard stationBoard in stationBoardRoot.Entries)
             {
                 try
                 {

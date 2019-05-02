@@ -70,7 +70,7 @@
             this.columnDauer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnVerspaetung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Stationsfinder.SuspendLayout();
             this.tab_Abfahrtstafel.SuspendLayout();
@@ -151,7 +151,7 @@
             // 
             // tab_Stationsfinder
             // 
-            this.tab_Stationsfinder.Controls.Add(this.webBrowser1);
+            this.tab_Stationsfinder.Controls.Add(this.webBrowser);
             this.tab_Stationsfinder.Controls.Add(this.txt_Stationsfinder);
             this.tab_Stationsfinder.Controls.Add(this.btn_SuchenStationsfinder);
             this.tab_Stationsfinder.Controls.Add(this.listbox_Stationsfinder);
@@ -172,9 +172,9 @@
             this.lbl_Stationsfinder.Location = new System.Drawing.Point(78, 15);
             this.lbl_Stationsfinder.Name = "lbl_Stationsfinder";
             this.lbl_Stationsfinder.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_Stationsfinder.Size = new System.Drawing.Size(227, 42);
+            this.lbl_Stationsfinder.Size = new System.Drawing.Size(246, 42);
             this.lbl_Stationsfinder.TabIndex = 16;
-            this.lbl_Stationsfinder.Text = "Abfahrtstafel";
+            this.lbl_Stationsfinder.Text = "Stationsfinder";
             // 
             // label1
             // 
@@ -496,14 +496,14 @@
             this.tabControl.Size = new System.Drawing.Size(867, 724);
             this.tabControl.TabIndex = 0;
             // 
-            // webBrowser1
+            // webBrowser
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(85, 321);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(685, 340);
-            this.webBrowser1.TabIndex = 24;
-            this.webBrowser1.Url = new System.Uri("https://www.google.com/maps/search/transit+station/", System.UriKind.Absolute);
+            this.webBrowser.Location = new System.Drawing.Point(85, 321);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(685, 340);
+            this.webBrowser.TabIndex = 24;
+            this.webBrowser.Url = new System.Uri("https://www.google.com/maps/search/transit+station/", System.UriKind.Absolute);
             // 
             // Form1
             // 
@@ -577,7 +577,7 @@
         private System.Windows.Forms.Label lbl_Von;
         private System.Windows.Forms.Label lbl_Fahrplan;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser webBrowser;
     }
 }
 
