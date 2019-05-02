@@ -89,7 +89,7 @@
             this.btn_Fahrplan.Location = new System.Drawing.Point(-1, 192);
             this.btn_Fahrplan.Name = "btn_Fahrplan";
             this.btn_Fahrplan.Size = new System.Drawing.Size(229, 74);
-            this.btn_Fahrplan.TabIndex = 1;
+            this.btn_Fahrplan.TabIndex = 0;
             this.btn_Fahrplan.Text = "Fahrplan";
             this.btn_Fahrplan.UseVisualStyleBackColor = false;
             this.btn_Fahrplan.Click += new System.EventHandler(this.btn_Fahrplan_Click);
@@ -114,7 +114,7 @@
             this.btn_Abfahrtstafel.Location = new System.Drawing.Point(-1, 270);
             this.btn_Abfahrtstafel.Name = "btn_Abfahrtstafel";
             this.btn_Abfahrtstafel.Size = new System.Drawing.Size(229, 74);
-            this.btn_Abfahrtstafel.TabIndex = 23;
+            this.btn_Abfahrtstafel.TabIndex = 1;
             this.btn_Abfahrtstafel.Text = "Abfahrtstafel";
             this.btn_Abfahrtstafel.UseVisualStyleBackColor = false;
             this.btn_Abfahrtstafel.Click += new System.EventHandler(this.btn_Abfahrtstafel_Click);
@@ -142,7 +142,7 @@
             this.btn_Stationsfinder.Location = new System.Drawing.Point(-1, 348);
             this.btn_Stationsfinder.Name = "btn_Stationsfinder";
             this.btn_Stationsfinder.Size = new System.Drawing.Size(229, 74);
-            this.btn_Stationsfinder.TabIndex = 25;
+            this.btn_Stationsfinder.TabIndex = 2;
             this.btn_Stationsfinder.Text = "Stationsfinder";
             this.btn_Stationsfinder.UseVisualStyleBackColor = false;
             this.btn_Stationsfinder.Click += new System.EventHandler(this.btn_Stationsfinder_Click);
@@ -201,7 +201,7 @@
             this.txt_Stationsfinder.Location = new System.Drawing.Point(85, 106);
             this.txt_Stationsfinder.Name = "txt_Stationsfinder";
             this.txt_Stationsfinder.Size = new System.Drawing.Size(259, 20);
-            this.txt_Stationsfinder.TabIndex = 20;
+            this.txt_Stationsfinder.TabIndex = 0;
             this.txt_Stationsfinder.TextChanged += new System.EventHandler(this.txt_Stationsfinder_TextChanged);
             this.txt_Stationsfinder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Stationsfinder_KeyDown);
             // 
@@ -213,7 +213,7 @@
             this.btn_SuchenStationsfinder.Location = new System.Drawing.Point(569, 175);
             this.btn_SuchenStationsfinder.Name = "btn_SuchenStationsfinder";
             this.btn_SuchenStationsfinder.Size = new System.Drawing.Size(201, 78);
-            this.btn_SuchenStationsfinder.TabIndex = 23;
+            this.btn_SuchenStationsfinder.TabIndex = 1;
             this.btn_SuchenStationsfinder.Text = "SUCHEN";
             this.btn_SuchenStationsfinder.UseVisualStyleBackColor = false;
             this.btn_SuchenStationsfinder.Click += new System.EventHandler(this.btn_SuchenStationsfinder_Click);
@@ -263,13 +263,14 @@
             this.listbox_Bahnhof.Size = new System.Drawing.Size(258, 121);
             this.listbox_Bahnhof.TabIndex = 22;
             this.listbox_Bahnhof.TabStop = false;
+            this.listbox_Bahnhof.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listbox_Bahnhof_MouseDoubleClick);
             // 
             // txt_Bahnhof
             // 
             this.txt_Bahnhof.Location = new System.Drawing.Point(85, 106);
             this.txt_Bahnhof.Name = "txt_Bahnhof";
             this.txt_Bahnhof.Size = new System.Drawing.Size(259, 20);
-            this.txt_Bahnhof.TabIndex = 20;
+            this.txt_Bahnhof.TabIndex = 0;
             this.txt_Bahnhof.TextChanged += new System.EventHandler(this.txt_Bahnhof_TextChanged);
             this.txt_Bahnhof.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Bahnhof_KeyDown);
             // 
@@ -281,7 +282,7 @@
             this.btn_SuchenAbfahrtstafel.Location = new System.Drawing.Point(569, 175);
             this.btn_SuchenAbfahrtstafel.Name = "btn_SuchenAbfahrtstafel";
             this.btn_SuchenAbfahrtstafel.Size = new System.Drawing.Size(201, 78);
-            this.btn_SuchenAbfahrtstafel.TabIndex = 23;
+            this.btn_SuchenAbfahrtstafel.TabIndex = 1;
             this.btn_SuchenAbfahrtstafel.Text = "SUCHEN";
             this.btn_SuchenAbfahrtstafel.UseVisualStyleBackColor = false;
             this.btn_SuchenAbfahrtstafel.Click += new System.EventHandler(this.btn_SuchenAbfahrtstafel_Click);
@@ -297,6 +298,7 @@
             this.listView_AbfahrtsTafel.Name = "listView_AbfahrtsTafel";
             this.listView_AbfahrtsTafel.Size = new System.Drawing.Size(685, 261);
             this.listView_AbfahrtsTafel.TabIndex = 24;
+            this.listView_AbfahrtsTafel.TabStop = false;
             this.listView_AbfahrtsTafel.UseCompatibleStateImageBehavior = false;
             this.listView_AbfahrtsTafel.View = System.Windows.Forms.View.Details;
             // 
@@ -394,7 +396,7 @@
             this.txt_Von.Location = new System.Drawing.Point(85, 106);
             this.txt_Von.Name = "txt_Von";
             this.txt_Von.Size = new System.Drawing.Size(259, 20);
-            this.txt_Von.TabIndex = 13;
+            this.txt_Von.TabIndex = 0;
             this.txt_Von.TextChanged += new System.EventHandler(this.txt_Von_TextChanged);
             this.txt_Von.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Von_KeyDown);
             // 
@@ -403,7 +405,7 @@
             this.txt_Nach.Location = new System.Drawing.Point(512, 110);
             this.txt_Nach.Name = "txt_Nach";
             this.txt_Nach.Size = new System.Drawing.Size(258, 20);
-            this.txt_Nach.TabIndex = 14;
+            this.txt_Nach.TabIndex = 1;
             this.txt_Nach.TextChanged += new System.EventHandler(this.txt_Nach_TextChanged);
             this.txt_Nach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Nach_KeyDown);
             // 
@@ -415,7 +417,7 @@
             this.btn_Suchen.Location = new System.Drawing.Point(569, 313);
             this.btn_Suchen.Name = "btn_Suchen";
             this.btn_Suchen.Size = new System.Drawing.Size(201, 56);
-            this.btn_Suchen.TabIndex = 16;
+            this.btn_Suchen.TabIndex = 2;
             this.btn_Suchen.Text = "SUCHEN";
             this.btn_Suchen.UseVisualStyleBackColor = false;
             this.btn_Suchen.Click += new System.EventHandler(this.btn_Suchen_Click);
@@ -495,6 +497,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(867, 724);
             this.tabControl.TabIndex = 0;
+            this.tabControl.TabStop = false;
             // 
             // webBrowser
             // 
@@ -503,6 +506,7 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(685, 340);
             this.webBrowser.TabIndex = 24;
+            this.webBrowser.TabStop = false;
             this.webBrowser.Url = new System.Uri("https://www.google.com/maps/search/transit+station/", System.UriKind.Absolute);
             // 
             // Form1
@@ -515,8 +519,8 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btn_Fahrplan);
             this.Controls.Add(this.btn_Abfahrtstafel);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_Stationsfinder);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
