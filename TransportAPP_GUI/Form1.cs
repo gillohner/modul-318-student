@@ -24,11 +24,11 @@ namespace TransportAPP_GUI
 
         public void StationSuchen(string Stationsname, ListBox ListBoxName)
         {
-            Stations Stations = t.GetStations(Stationsname);
+            Stations stations = t.GetStations(Stationsname);
 
             ListBoxName.Items.Clear();
 
-            foreach (Station station in Stations.StationList)
+            foreach (Station station in stations.StationList)
             {
                 try
                 {
@@ -52,11 +52,11 @@ namespace TransportAPP_GUI
             }
         }
 
-        private void Verbindung(ListView ListViewName)
+        private void Verbindung(ListView ListViewName, String Abfahrtstation, String Zielstation)
         {
             ListViewName.Items.Clear();
 
-            Connections connections = t.GetConnections(txt_Von.Text, txt_Nach.Text);
+            Connections connections = t.GetConnections(Abfahrtstation, Zielstation);
 
             foreach (Connection connection in connections.ConnectionList)
             {
@@ -73,13 +73,45 @@ namespace TransportAPP_GUI
                     connection1.SubItems.Add(connection.To.Station.Name);
                     connection1.SubItems.Add(connection.To.Platform);
                     connection1.SubItems.Add(connection.Duration);
-                    connection1.SubItems.Add(connection.From.Delay.ToString() + "min.");
+                    if (connection.To.Delay != null)
+                    {
+                        connection1.SubItems.Add(connection.From.Delay.ToString() + " min.");
+                    }
 
                     ListViewName.Items.Add(connection1);
                 }
                 catch
                 {
 
+                }
+            }
+        }
+
+        private void StationBoard(string BahnhofName, ListView ListViewName)
+        {
+            Stations stations = t.GetStations(BahnhofName);
+            string ID = null;
+
+            foreach (Station station in stations.StationList)
+            {
+                try
+                {
+                    ID= station.Id;
+                }
+                catch {}
+            }
+
+            StationBoardRoot stationBoard = t.GetStationBoard(BahnhofName, ID);
+
+            foreach (StationBoard sb in stationBoard.Entries)
+            {
+                try
+                {
+
+                }
+                catch
+                {
+                    MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.");
                 }
             }
         }
@@ -96,7 +128,7 @@ namespace TransportAPP_GUI
 
         private void btn_Suchen_Click(object sender, EventArgs e)
         {
-            Verbindung(listview_Ausgabe);
+            Verbindung(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
         }
 
         private void listbox_Von_DoubleClick(object sender, EventArgs e)
@@ -124,9 +156,9 @@ namespace TransportAPP_GUI
             MaximizeBox = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_SuchenAbfahrtstafel_Click(object sender, EventArgs e)
         {
-
+            StationBoard(txt_Bahnhof.Text, listView_AbfahrtsTafel);
         }
     }
 }
