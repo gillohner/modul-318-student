@@ -16,7 +16,6 @@ namespace TransportAPP_GUI
 
         //Membervariablen
         Transport t = new Transport();
-        Form2 form = null;
 
         public Form1()
         {
@@ -66,13 +65,15 @@ namespace TransportAPP_GUI
                 try
                 {
                     ListViewItem connection1 = new ListViewItem();
-                    connection1.Text = Departure.ToShortTimeString();
+                    connection1.Text = null;
+                    connection1.SubItems.Add(Departure.ToShortTimeString());
                     connection1.SubItems.Add(Arrival.ToShortTimeString());
                     connection1.SubItems.Add(connection.From.Station.Name);
                     connection1.SubItems.Add(connection.From.Platform);
                     connection1.SubItems.Add(connection.To.Station.Name);
                     connection1.SubItems.Add(connection.To.Platform);
                     connection1.SubItems.Add(connection.Duration);
+                    connection1.SubItems.Add(connection.From.Delay.ToString() + "min.");
 
                     ListViewName.Items.Add(connection1);
                 }
@@ -108,15 +109,23 @@ namespace TransportAPP_GUI
             TextBoxBefuellung(listbox_Nach, txt_Nach);
         }
 
-        private void btn_Abfahrtstafel_Click(object sender, EventArgs e)
+        private void txt_Bahnhof_TextChanged(object sender, EventArgs e)
         {
-            if (form == null)
-            { 
-                form = new Form2(this);
-                form.Show();
-            }
+            StationSuchen(txt_Bahnhof.Text, listBox_Bahnhof);
+        }
 
-            form.Activate();
+        private void listBox_Bahnhof_DoubleClick(object sender, EventArgs e)
+        {
+            TextBoxBefuellung(listBox_Bahnhof, txt_Bahnhof);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MaximizeBox = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }
