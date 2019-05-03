@@ -113,14 +113,14 @@ namespace TransportAPP_GUI
             MoveToListBox(e, txt_Stationsfinder, listbox_Stationsfinder);
         }
 
+
         //FillTextBox
         private void FillTextBox(TextBox TextBoxName, ListBox ListBoxName)
         {
-            try
+            if (ListBoxName.SelectedItems != null && ListBoxName.SelectedItems.Count > 0)
             {
                 TextBoxName.Text = ListBoxName.SelectedItems[0].ToString();
             }
-            catch { }
         }
 
         private void listbox_Von_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -188,10 +188,11 @@ namespace TransportAPP_GUI
         {
             Station stations = t.GetStations(StationName).StationList.First();
 
-            string xcoordinate = stations.Coordinate.XCoordinate.ToString();
-            string ycoordinate = stations.Coordinate.YCoordinate.ToString();
-            webBrowser.Url = new System.Uri("https://www.google.com/maps?q=" + xcoordinate + "," +  ycoordinate, System.UriKind.Absolute);
+            string XCoordinate = stations.Coordinate.XCoordinate.ToString();
+            string YCoordinate = stations.Coordinate.YCoordinate.ToString();
+            webBrowser.Url = new System.Uri("https://www.google.com/maps?q=" + XCoordinate + "," +  YCoordinate, System.UriKind.Absolute);
         }
+
         private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
         {
             try

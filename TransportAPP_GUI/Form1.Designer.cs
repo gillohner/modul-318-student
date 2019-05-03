@@ -51,6 +51,8 @@
             this.lbl_Station = new System.Windows.Forms.Label();
             this.lbl_Abfahrtstafel = new System.Windows.Forms.Label();
             this.tab_Fahrplan = new System.Windows.Forms.TabPage();
+            this.btn_SendByMail = new System.Windows.Forms.Button();
+            this.datetimepicker_Time = new System.Windows.Forms.DateTimePicker();
             this.btn_Swap = new System.Windows.Forms.Button();
             this.datetimepicker_Date = new System.Windows.Forms.DateTimePicker();
             this.listview_Ausgabe = new System.Windows.Forms.ListView();
@@ -73,8 +75,6 @@
             this.lbl_Fahrplan = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.datetimepicker_Time = new System.Windows.Forms.DateTimePicker();
-            this.btn_SendByMail = new System.Windows.Forms.Button();
             this.tab_Stationsfinder.SuspendLayout();
             this.tab_Abfahrtstafel.SuspendLayout();
             this.tab_Fahrplan.SuspendLayout();
@@ -348,6 +348,23 @@
             this.tab_Fahrplan.Text = "tab_Fahrplan";
             this.tab_Fahrplan.UseVisualStyleBackColor = true;
             // 
+            // btn_SendByMail
+            // 
+            this.btn_SendByMail.Location = new System.Drawing.Point(667, 539);
+            this.btn_SendByMail.Name = "btn_SendByMail";
+            this.btn_SendByMail.Size = new System.Drawing.Size(103, 23);
+            this.btn_SendByMail.TabIndex = 24;
+            this.btn_SendByMail.Text = "Per Mail Senden";
+            this.btn_SendByMail.UseVisualStyleBackColor = true;
+            // 
+            // datetimepicker_Time
+            // 
+            this.datetimepicker_Time.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.datetimepicker_Time.Location = new System.Drawing.Point(261, 314);
+            this.datetimepicker_Time.Name = "datetimepicker_Time";
+            this.datetimepicker_Time.Size = new System.Drawing.Size(82, 20);
+            this.datetimepicker_Time.TabIndex = 23;
+            // 
             // btn_Swap
             // 
             this.btn_Swap.BackColor = System.Drawing.Color.White;
@@ -539,35 +556,18 @@
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
-            // datetimepicker_Time
-            // 
-            this.datetimepicker_Time.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.datetimepicker_Time.Location = new System.Drawing.Point(261, 314);
-            this.datetimepicker_Time.Name = "datetimepicker_Time";
-            this.datetimepicker_Time.Size = new System.Drawing.Size(82, 20);
-            this.datetimepicker_Time.TabIndex = 23;
-            // 
-            // btn_SendByMail
-            // 
-            this.btn_SendByMail.Location = new System.Drawing.Point(667, 539);
-            this.btn_SendByMail.Name = "btn_SendByMail";
-            this.btn_SendByMail.Size = new System.Drawing.Size(103, 23);
-            this.btn_SendByMail.TabIndex = 24;
-            this.btn_SendByMail.Text = "Per Mail Senden";
-            this.btn_SendByMail.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1084, 731);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btn_Fahrplan);
             this.Controls.Add(this.btn_Abfahrtstafel);
             this.Controls.Add(this.btn_Stationsfinder);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
