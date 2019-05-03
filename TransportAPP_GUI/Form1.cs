@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 using System.Windows.Forms;
 using SwissTransport;
+using System.IO;
 
 namespace TransportAPP_GUI
 {
@@ -15,6 +17,7 @@ namespace TransportAPP_GUI
     {
         //Membervariablen
         Transport t = new Transport();
+       string filepath = null;
 
 
         //Form
@@ -45,7 +48,10 @@ namespace TransportAPP_GUI
                         ListBoxName.Items.Add(station.Name);
                     }
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show("Geben Sie bitte eine gültige Station ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
         
@@ -89,7 +95,10 @@ namespace TransportAPP_GUI
                         TextBoxName.Text = ListBoxName.SelectedItems[0].ToString();
                     }
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show("Die Befüllung der Textbox ist fehlgeschlagen", "Warnung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -145,12 +154,11 @@ namespace TransportAPP_GUI
 
 
         //Connection        
-        private void Connection(ListView ListViewName, String Abfahrtstation, String Zielstation, DateTime time, DateTime date)
+        private void Connection(ListView ListViewName, String Abfahrtstation, String Zielstation)
         {
             ListViewName.Items.Clear();
 
             Connections connections = t.GetConnections(Abfahrtstation, Zielstation);
-            //Nicht Fertig!!
             foreach (Connection connection in connections.ConnectionList)
             {
                 DateTime Departure = DateTime.Parse(connection.From.Departure);
@@ -164,8 +172,7 @@ namespace TransportAPP_GUI
                     connection1.SubItems.Add(connection.From.Station.Name);
                     connection1.SubItems.Add(connection.From.Platform);
                     connection1.SubItems.Add(connection.To.Station.Name);
-                    connection1.SubItems.Add(connection.To.Platform);
-                    connection1.SubItems.Add(connection.Duration);
+                    connection1.SubItems.Add(connection.Duration.Replace("00d", "").Replace(":00", ""));
                     if (connection.To.Delay != null)
                     {
                         connection1.SubItems.Add(connection.From.Delay.ToString() + " min.");
@@ -173,36 +180,39 @@ namespace TransportAPP_GUI
 
                     ListViewName.Items.Add(connection1);
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show("Geben Sie bitte eine gültige Station ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
         private void btn_Suchen_Click(object sender, EventArgs e)
         {  
-                Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text, datetimepicker_Time.Value, datetimepicker_Date.Value);
+                Connection(listview_Ausgabe, txt_Von.Text, txt_Nach.Text);
         }
 
 
         //CreateGoogleMaps
         private void CreateGoogleMaps(string StationName)
         {
-            Station stations = t.GetStations(StationName).StationList.First();
-
-            string XCoordinate = stations.Coordinate.XCoordinate.ToString();
-            string YCoordinate = stations.Coordinate.YCoordinate.ToString();
-            webBrowser.Url = new System.Uri("https://www.google.com/maps?q=" + XCoordinate + "," +  YCoordinate, System.UriKind.Absolute);
-        }
-
-        private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
-        {
             try
             {
-                CreateGoogleMaps(txt_Stationsfinder.Text);
+                Station stations = t.GetStations(StationName).StationList.First();
+
+                string XCoordinate = stations.Coordinate.XCoordinate.ToString();
+                string YCoordinate = stations.Coordinate.YCoordinate.ToString();
+                webBrowser.Url = new System.Uri("https://www.google.com/maps?q=" + XCoordinate.Replace(",", ".") + "," + YCoordinate.Replace(",", "."), System.UriKind.Absolute);
             }
             catch
             {
                 MessageBox.Show("Geben Sie bitte eine gültige Station ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btn_SuchenStationsfinder_Click(object sender, EventArgs e)
+        {
+                CreateGoogleMaps(txt_Stationsfinder.Text);
         }
 
 
@@ -305,9 +315,77 @@ namespace TransportAPP_GUI
             ButtonFarbeAendern(btn_Stationsfinder, Color.Black);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
+        //SwapStations
+        private void SwapStations(TextBox TextBoxVonName, TextBox TextBoxNachName)
+        {
+            string StationVon = TextBoxVonName.Text;
+            string StationNach = TextBoxNachName.Text;
+
+            TextBoxNachName.Clear();
+            TextBoxVonName.Clear();
+
+            TextBoxNachName.Text = StationVon;
+            TextBoxVonName.Text = StationNach;
+        }
+
+        private void btn_Swap_Click(object sender, EventArgs e)
+        {
+            SwapStations(txt_Von, txt_Nach);
+        }
+
+        //SendMail
+        private void SendMail(String MailAdresse, ListView ListViewName)
+        {
+                   string[] headers = ListViewName.Columns
+                               .OfType<ColumnHeader>()
+                               .Select(header => header.Text.Trim())
+                               .ToArray();
+
+                    string[][] items = ListViewName.Items
+                                .OfType<ListViewItem>()
+                                .Select(lvi => lvi.SubItems
+                                    .OfType<ListViewItem.ListViewSubItem>()
+                                    .Select(si => si.Text).ToArray()).ToArray();
+
+                    string table = string.Join(",", headers) + Environment.NewLine;
+                    foreach (string[] a in items)
+                    {
+                        table += string.Join(",", a) + Environment.NewLine;
+                    }
+                    table = table.TrimEnd('\r', '\n');
+                    
+                    //Gerne hätte ich die Daten als .CSV in einem Ordner abgespeichert und dann in der E-Mail als Anhang gesendet. Leider kann ich die Datei nirgends hinspeichern, da ich keine Rechte habe. Die alten Zeilen habe ich im Code gelassen.
+                    //  filepath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    // File.WriteAllText(filepath, table);
+
+              
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("FahrplanAPPGillohner@gmail.com");
+                mailMessage.To.Add(new MailAddress(MailAdresse));
+                mailMessage.Subject = "FahrplanAPP";
+                mailMessage.Body = "Hier ist ein Fahrplan, den ich mit dir teilen wollte: " + table;
+                //mailMessage.Attachments.Add(new Attachment(filepath)); 
+                mailMessage.IsBodyHtml = true;
+                SmtpClient SmtpServer = new SmtpClient();
+                SmtpServer.Host = "smtp.gmail.com";
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("FahrplanAPPGillohner@gmail.com", "spDaq$zgp%Rd1vX0iOgR");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mailMessage);
+                MessageBox.Show("Die E-Mail wurde erfolgreich versendet!", "Herzlichen Glückwunsch");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btn_SendByMail_Click(object sender, EventArgs e)
+        {
+            SendMail(txt_Mail.Text, listview_Ausgabe);
         }
     }
 }

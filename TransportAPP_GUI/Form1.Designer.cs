@@ -51,10 +51,11 @@
             this.lbl_Station = new System.Windows.Forms.Label();
             this.lbl_Abfahrtstafel = new System.Windows.Forms.Label();
             this.tab_Fahrplan = new System.Windows.Forms.TabPage();
-            this.btn_SendByMail = new System.Windows.Forms.Button();
-            this.datetimepicker_Time = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_Mail = new System.Windows.Forms.Label();
+            this.txt_Mail = new System.Windows.Forms.TextBox();
+            this.btn_Mail = new System.Windows.Forms.Button();
             this.btn_Swap = new System.Windows.Forms.Button();
-            this.datetimepicker_Date = new System.Windows.Forms.DateTimePicker();
             this.listview_Ausgabe = new System.Windows.Forms.ListView();
             this.columnZugName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnAbfahrt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,7 +63,6 @@
             this.columnVon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnGleisVon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnGleisNach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDauer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnVerspaetung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txt_Nach = new System.Windows.Forms.TextBox();
@@ -181,6 +181,7 @@
             // btn_SuchenStationsfinder
             // 
             this.btn_SuchenStationsfinder.BackColor = System.Drawing.Color.Red;
+            this.btn_SuchenStationsfinder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SuchenStationsfinder.Font = new System.Drawing.Font("Calibri", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SuchenStationsfinder.ForeColor = System.Drawing.Color.Snow;
             this.btn_SuchenStationsfinder.Location = new System.Drawing.Point(569, 175);
@@ -284,6 +285,7 @@
             // btn_SuchenAbfahrtstafel
             // 
             this.btn_SuchenAbfahrtstafel.BackColor = System.Drawing.Color.Red;
+            this.btn_SuchenAbfahrtstafel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SuchenAbfahrtstafel.Font = new System.Drawing.Font("Calibri", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SuchenAbfahrtstafel.ForeColor = System.Drawing.Color.Snow;
             this.btn_SuchenAbfahrtstafel.Location = new System.Drawing.Point(569, 175);
@@ -327,10 +329,11 @@
             // 
             // tab_Fahrplan
             // 
-            this.tab_Fahrplan.Controls.Add(this.btn_SendByMail);
-            this.tab_Fahrplan.Controls.Add(this.datetimepicker_Time);
+            this.tab_Fahrplan.Controls.Add(this.label2);
+            this.tab_Fahrplan.Controls.Add(this.lbl_Mail);
+            this.tab_Fahrplan.Controls.Add(this.txt_Mail);
+            this.tab_Fahrplan.Controls.Add(this.btn_Mail);
             this.tab_Fahrplan.Controls.Add(this.btn_Swap);
-            this.tab_Fahrplan.Controls.Add(this.datetimepicker_Date);
             this.tab_Fahrplan.Controls.Add(this.listview_Ausgabe);
             this.tab_Fahrplan.Controls.Add(this.txt_Nach);
             this.tab_Fahrplan.Controls.Add(this.txt_Von);
@@ -348,22 +351,47 @@
             this.tab_Fahrplan.Text = "tab_Fahrplan";
             this.tab_Fahrplan.UseVisualStyleBackColor = true;
             // 
-            // btn_SendByMail
+            // label2
             // 
-            this.btn_SendByMail.Location = new System.Drawing.Point(667, 539);
-            this.btn_SendByMail.Name = "btn_SendByMail";
-            this.btn_SendByMail.Size = new System.Drawing.Size(103, 23);
-            this.btn_SendByMail.TabIndex = 24;
-            this.btn_SendByMail.Text = "Per Mail Senden";
-            this.btn_SendByMail.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(82, 675);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(626, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "*Wenn Sie ihre gefundenen Resultate per E-Mail mit jemandem teilen möchten, geben" +
+    " Sie hier demjenigen seine E-Mail adresse ein.";
             // 
-            // datetimepicker_Time
+            // lbl_Mail
             // 
-            this.datetimepicker_Time.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.datetimepicker_Time.Location = new System.Drawing.Point(261, 314);
-            this.datetimepicker_Time.Name = "datetimepicker_Time";
-            this.datetimepicker_Time.Size = new System.Drawing.Size(82, 20);
-            this.datetimepicker_Time.TabIndex = 23;
+            this.lbl_Mail.AutoSize = true;
+            this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Mail.Location = new System.Drawing.Point(337, 570);
+            this.lbl_Mail.Name = "lbl_Mail";
+            this.lbl_Mail.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lbl_Mail.Size = new System.Drawing.Size(145, 24);
+            this.lbl_Mail.TabIndex = 27;
+            this.lbl_Mail.Text = "E-Mail Adresse*";
+            // 
+            // txt_Mail
+            // 
+            this.txt_Mail.Location = new System.Drawing.Point(334, 597);
+            this.txt_Mail.Name = "txt_Mail";
+            this.txt_Mail.Size = new System.Drawing.Size(229, 20);
+            this.txt_Mail.TabIndex = 26;
+            // 
+            // btn_Mail
+            // 
+            this.btn_Mail.BackColor = System.Drawing.Color.Red;
+            this.btn_Mail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Mail.Font = new System.Drawing.Font("Calibri", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Mail.ForeColor = System.Drawing.Color.Snow;
+            this.btn_Mail.Location = new System.Drawing.Point(569, 570);
+            this.btn_Mail.Name = "btn_Mail";
+            this.btn_Mail.Size = new System.Drawing.Size(201, 47);
+            this.btn_Mail.TabIndex = 25;
+            this.btn_Mail.Text = "Mail Senden";
+            this.btn_Mail.UseVisualStyleBackColor = false;
+            this.btn_Mail.Click += new System.EventHandler(this.btn_SendByMail_Click);
             // 
             // btn_Swap
             // 
@@ -378,14 +406,7 @@
             this.btn_Swap.Size = new System.Drawing.Size(75, 75);
             this.btn_Swap.TabIndex = 3;
             this.btn_Swap.UseVisualStyleBackColor = false;
-            this.btn_Swap.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // datetimepicker_Date
-            // 
-            this.datetimepicker_Date.Location = new System.Drawing.Point(86, 313);
-            this.datetimepicker_Date.Name = "datetimepicker_Date";
-            this.datetimepicker_Date.Size = new System.Drawing.Size(130, 20);
-            this.datetimepicker_Date.TabIndex = 22;
+            this.btn_Swap.Click += new System.EventHandler(this.btn_Swap_Click);
             // 
             // listview_Ausgabe
             // 
@@ -396,7 +417,6 @@
             this.columnVon,
             this.columnGleisVon,
             this.columnNach,
-            this.columnGleisNach,
             this.columnDauer,
             this.columnVerspaetung});
             this.listview_Ausgabe.Location = new System.Drawing.Point(85, 404);
@@ -437,11 +457,6 @@
             this.columnNach.Text = "Nach";
             this.columnNach.Width = 147;
             // 
-            // columnGleisNach
-            // 
-            this.columnGleisNach.Text = "Gleis";
-            this.columnGleisNach.Width = 42;
-            // 
             // columnDauer
             // 
             this.columnDauer.Text = "Dauer";
@@ -473,6 +488,7 @@
             // btn_Suchen
             // 
             this.btn_Suchen.BackColor = System.Drawing.Color.Red;
+            this.btn_Suchen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Suchen.Font = new System.Drawing.Font("Calibri", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Suchen.ForeColor = System.Drawing.Color.Snow;
             this.btn_Suchen.Location = new System.Drawing.Point(569, 277);
@@ -616,7 +632,6 @@
         private System.Windows.Forms.ColumnHeader columnVon;
         private System.Windows.Forms.ColumnHeader columnGleisVon;
         private System.Windows.Forms.ColumnHeader columnNach;
-        private System.Windows.Forms.ColumnHeader columnGleisNach;
         private System.Windows.Forms.ColumnHeader columnDauer;
         private System.Windows.Forms.ColumnHeader columnVerspaetung;
         private System.Windows.Forms.TextBox txt_Nach;
@@ -630,9 +645,10 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button btn_Swap;
-        private System.Windows.Forms.DateTimePicker datetimepicker_Date;
-        private System.Windows.Forms.DateTimePicker datetimepicker_Time;
-        private System.Windows.Forms.Button btn_SendByMail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_Mail;
+        private System.Windows.Forms.TextBox txt_Mail;
+        private System.Windows.Forms.Button btn_Mail;
     }
 }
 
